@@ -30,14 +30,22 @@ module.exports = {
         allowNull: false,
         unique: true,
       },
-      status: {
+      gender: {
         type: Sequelize.ENUM,
-        values: ['project-manager', 'collaborator', 'user'],
+        values: ["male", "female"],
         allowNull: false,
       },
-      isEmployed: {
-        type: Sequelize.BOOLEAN,
-        defaultValue: false,
+      weight: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+      },
+      age: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
+      activityLevel: {
+        type: Sequelize.ENUM,
+        values: ["sedentary", "lightly active", "moderately active", "very active", "super active"],
         allowNull: false,
       },
       hashedPassword: {

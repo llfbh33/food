@@ -17,24 +17,30 @@ const seedUsers = [
     name: "Starter",
     username: "starter-aubrie",
     email: 'AubrieWoodbine@gmail.com',
-    status: 'project-manager',
-    isEmployed: false,
+    gender: "female",
+    age: 31,
+    weight: 180,
+    activityLevel: "sedentary",
     hashedPassword: bcrypt.hashSync('password')
   },
   {
     name: "Demo-User",
     username: "demo-user",
     email: 'demo@gmail.com',
-    status: 'collaborator',
-    isEmployed: false,
+    gender: "male",
+    age: 25,
+    weight: 200,
+    activityLevel: "moderate",
     hashedPassword: bcrypt.hashSync('password1')
   },
   {
     name: "Demo-User2",
     username: "demo-user2",
     email: 'demo2@gmail.com',
-    status: 'user',
-    isEmployed: false,
+    gender: "female",
+    age: 35,
+    weight: 130,
+    activityLevel: "very active",
     hashedPassword: bcrypt.hashSync('password2')
   },
 ]

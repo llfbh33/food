@@ -1,4 +1,5 @@
 'use strict';
+const { on } = require('events');
 const {
   Model, Validator
 } = require('sequelize');
@@ -12,28 +13,29 @@ module.exports = (sequelize, DataTypes) => {
     static associate(models) {
       // define association here
 
-      User.hasMany(models.Resource, {
-        foreignKey: "userId",
-        hooks: true
-      });
-
-      User.hasMany(models.Question, {
+      User.hasMany(models.Daily, {
         foreignKey: "userId",
         onDelete: "CASCADE",
         hooks: true
       });
 
-      User.hasMany(models.Task, {
-        foreignKey: "userId",
-        onDelete: "CASCADE",
-        hooks: true
-      });
+      // User.hasMany(models.Question, {
+      //   foreignKey: "userId",
+      //   onDelete: "CASCADE",
+      //   hooks: true
+      // });
 
-      User.hasMany(models.Journal, {
-        foreignKey: "userId",
-        onDelete:"CASCADE",
-        hooks: true
-      })
+      // User.hasMany(models.Task, {
+      //   foreignKey: "userId",
+      //   onDelete: "CASCADE",
+      //   hooks: true
+      // });
+
+      // User.hasMany(models.Journal, {
+      //   foreignKey: "userId",
+      //   onDelete:"CASCADE",
+      //   hooks: true
+      // })
 
     }
   }
@@ -72,15 +74,30 @@ module.exports = (sequelize, DataTypes) => {
         isEmail: true,
       }
     },
-    status: {
+    gender: {
       type: DataTypes.ENUM,
       allowNull: false,
-      values: ['project-manager', 'collaborator', 'user'],
+      values: ["male", "female"],
     },
-    isEmployed: {
-      type: DataTypes.BOOLEAN,
+    weight: {
+      type: DataTypes.INTEGER,
+      validate: {
+        min: 50,
+        max: 500
+      }
+    },
+    age: {
+      type: DataTypes.INTEGER,
       allowNull: false,
-      defaultValue: false
+      validate: {
+        min: 13,
+        max: 120
+      }
+    },
+    activityLevel: {
+      type: DataTypes.ENUM,
+      allowNull: false,
+      values: ["sedentary", "light", "moderate", "active", "very active"],
     },
     hashedPassword: {
       type: DataTypes.STRING.BINARY,
